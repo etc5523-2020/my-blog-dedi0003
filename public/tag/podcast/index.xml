@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>podcast | My Story</title>
+    <link>/tag/podcast/</link>
+      <atom:link href="/tag/podcast/index.xml" rel="self" type="application/rss+xml" />
+    <description>podcast</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>www.vegatroz.ga</copyright><lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hud341a867c33daa7b5df47f4ceb075901_256278_512x512_fill_lanczos_center_2.png</url>
+      <title>podcast</title>
+      <link>/tag/podcast/</link>
+    </image>
+    
+    <item>
+      <title>Podcast</title>
+      <link>/project/external-project/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>/project/external-project/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

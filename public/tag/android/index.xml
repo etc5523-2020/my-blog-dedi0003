@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android | My Story</title>
+    <link>/tag/android/</link>
+      <atom:link href="/tag/android/index.xml" rel="self" type="application/rss+xml" />
+    <description>Android</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>www.vegatroz.ga</copyright><lastBuildDate>Wed, 27 Apr 2016 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hud341a867c33daa7b5df47f4ceb075901_256278_512x512_fill_lanczos_center_2.png</url>
+      <title>Android</title>
+      <link>/tag/android/</link>
+    </image>
+    
+    <item>
+      <title>Android Project</title>
+      <link>/project/internal-project/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      <guid>/project/internal-project/</guid>
+      <description>&lt;p&gt;I created an android application to help Indonesian retail investor getting direct access to information related to retail bonds, especially SUN Ritel. This application can give notification on any particular events i.e. launching and settlement.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
