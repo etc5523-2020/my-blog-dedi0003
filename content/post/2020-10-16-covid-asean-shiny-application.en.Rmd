@@ -17,12 +17,13 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
+bibliography: references.bib
+nocite: |
+  @timevis, @shiny
 ---
 ```{r setup, echo=FALSE, warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-library(knitr)
 library(timevis)
-library(widgetframe)
 ```
 
 
@@ -38,12 +39,12 @@ My shiny application has 2 main sections, which are **the control panel (left si
 
 On the other hand, the main display provides 3 plots covering total cases number from all countries, cases trend line in a specific country as well as mobility trend. The total cases number plot is a primary plot which can be linked to the secondary plot of cases trend line by clicking on a specific country. This behaviour takes advantage of ```plotly::event_data``` function. The mobility trend (as in figure \@ref(fig:mobil)) shows average trend in people's mobility in several categories and in specific date range that can be chosen from the sidebar.  
 
-```{r sidebar, fig.cap="Control Panel of My Shiny Application"}
-knitr::include_graphics("sidebar.PNG")
+```{r sidebar, fig.cap="Control Panel of My Shiny Application  "}  
+knitr::include_graphics("sidebar.PNG")  
 ```
+  
 
-
-```{r mobil, fig.cap="ASEAN People's Mobility Chart"}
+```{r mobil, fig.cap="ASEAN People's Mobility Chart", fig.align="center"}
 knitr::include_graphics("mobility_plot.PNG")
 ```
 
@@ -60,14 +61,14 @@ I realize that my shiny application has several issues that can be improved in o
 knitr::include_graphics("total_case.PNG")
 ```
 
-I also think that it maybe better to link between table and the first plot, hence when users click on a country in the first plot it will change not only the trend line plot but also the summary table showing that one particular country.
+Moreover, I also think that it maybe better to link between table and the first plot, hence when users click on a country in the first plot it will change not only the trend line plot but also the summary table showing that one particular country.
 
 ### Some Possible Elements to Add On :wrench:
 Regarding that my shiny application just contains tabular data and visualization, I would like to add a geospasial element to the application. I was thinking to use leaflet map to show locations of these 5 countries but at the moment I just wanted users to focus on the covid-19 data. Having a map element, users will be able to click on the capital of each country to bring them to several plots (i.e. total cases and trend line plots). 
 
 Another feature I want to add is actually timeline events from these ASEAN countries related to the covid policy, i.e. first case, time event of closing international border,  first 1000 cases and lifting the lockdown. For adding this timeline, perhaps I can use timeviz package and put  ```timevisOutput()``` in UI section as well as ```renderTimevis(timevis())``` to the server. Users should be able to interact with the timeline for example by selecting parameter date range to show some milestone events in the period (illustrated in figure \@ref(fig:timevis)). 
 
-```{r timevis, fig.cap="Illustration of Timevis Element"}
+```{r timevis, fig.cap="Illustration of Timevis Element", fig.align='center'}
 
 data <- data.frame(
   id      = 1:4,
@@ -81,12 +82,13 @@ knitr::include_graphics("timevis.png")
 
 
 ### Some Dreamed Features :star2:
-Talking about some imaginable features to add on my shiny application, I believe that creating geospasial plot that covers not only cases in country level but also provincial is very interesting. When users click on a capital city of one country, it will shows information in all provinces to see in which province the outbreak is more concentrated (shown by different circle size for instance as illustrated in figure \@ref(fig:peta)). The main challenges for this is **data availability**. For example in my country, data for all provinces is somehow not publicly shared in a raw data format but instead just shown in a given chart (https://covid19.go.id/peta-sebaran). Other countries also do not provide such provincial information.
+Talking about some imaginable features to add on my shiny application, I believe that creating a geospatial plot that covers not only cases in country level but also provincial is very interesting. When users click on a capital city of one country, it will shows information in all provinces to see in which province the outbreak is more concentrated (shown by different circle size for instance as illustrated in figure \@ref(fig:peta)). The main challenges for this is **data availability**. For example in my country, data for all provinces is somehow not publicly shared in a raw data format but instead just shown in a given chart (https://covid19.go.id/peta-sebaran). Other countries also do not provide such provincial information.
 
-```{r peta, fig.cap="Indonesia's Provincial Breakdown of Covid-19 Data"}
+```{r peta, fig.cap="Indonesia's Provincial Breakdown of Covid-19 Data", fig.align='center'}
 knitr::include_graphics("peta_sebaran.png")
 ```
 
-Another obstacle is finding geospatial data (i.e. shapefile) for a country's map that can be break down into several provinces.
+Another obstacle is finding geospatial data (i.e. shapefile) for forming a country's map that can be broken down into several provinces. Assuming that the provincial covid data is available (at least for Indonesia) and required maps can be found, I would like to create additional option for users to divide regions further into several level of outbreak represented by colours (green, red and black). ```Green``` colour indicates that one region is considered safe with low cases, while ```red``` is moderate to high cases, and ```black``` represents very high cases and very infectious region. In fact, currently the Government of Indonesia uses the divisions to implement different measures on each regions based on their categories, for example on campus learning is allowed only for green regions. This feature can also be useful for people plan to travel to somewhere in the country.   
 
-Assuming that the provincial covid data is available (at least for Indonesia) and required maps can be found, I would like to create additional option for users to divide regions further into several level of outbreak represented by colours (green, red and black). ```Green``` colour indicates that one region is considered safe with low cases, while ```red``` is moderate to high cases, and ```black``` represents very high cases and very infectious region. In fact, currently the Government of Indonesia uses the divisions to implement different measures on each regions based on their categories, for example on campus learning is allowed only for green regions. This feature can be useful for people plan to travel to somewhere in the country.   
+## Bibliography
+
