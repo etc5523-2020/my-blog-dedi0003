@@ -1,0 +1,95 @@
+---
+title: Reviewing "Covid19" R Package
+author: Dea Avega Editya
+date: '2020-10-25'
+slug: reviewing-covid19-r-package
+categories:
+  - shiny
+  - review
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2020-10-25T23:01:44+11:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+## About Covid19 R Package :bulb:
+This week I get an opportunity to review an R package, titled **"Covid19"**, authored by my classmate Cuiping Wei. As informed on her [github page](https://etc5523-2020.github.io/r-package-assessment-cuiping-wei/), we can download and install the package through this command:   ```devtools::install_github("etc5523-2020/r-package-assessment-cuiping-wei")```. Before installing this package, she also tells us to first install dependency (which is Coronavirus R package) using this command:  
+```devtools::install_github("RamiKrispin/coronavirus")```. The Covid19 package contain a shiny dashboard that provides updated real-time data of global COVID-19 development and a dataset of countries' population number. As written by Cuiping, the shiny dashboard offers simple interactive visualization comparing different countries through graphs and table. Furthermore, there are three pages available in the shiny application consist of **map**, **visualization** and **about** page.  
+
+The map page shows users about distribution of covid around the globe including confirmed, deaths, recovered and active number of cases. Users are able to play around with slider at the bottom of the page to change the time period shown on the map or just click on the play button to automatically slide it from start to end. It thus brings animation to the map reflecting the development of covid-19 cases around the world, a feature that I astonished at :sparkling_heart:.  In addition, users can easily read summary information of total covid-19 cases on top boxes panel customised by different colours. On the visualization page, users can use different inputs to explore several plots and a summary table. The "about" page is available to inform about purpose of creating the covid19 package, data source used by the package, author contact and reference.
+
+## Surprising Features  :clap:
+Frankly speaking, this Covid19 R package is beyond my expectation. It provides not only general comparison of cases between countries, but in fact it also gives users ability to see global tally and covid-19 development in all countries since the beginning of the outbreak. Using this feature, I can see which country (or even continent) that still struggle with the virus. Furthermore, the covid19 package also provides several visualization i.e. bar chart for total confirmed cases, line chart for COVID-19 cases on a logarithmic scale, and line chart for confirmed and mortality rates between different countries. What's more, I am also surprised that all parts in the shiny dashboard are interactive including its summary table that created by using dt package. Hence,  I can use search field in the table to easily find summary data for a country.  
+<center>
+<video src = "https://i.imgur.com/OAMArgv.mp4" width="320" height="240" type="video/mp4" controls></video>"Scaterplot Map of Global Covid19 Cases from Covid19 Package"</center>
+
+## Room for Improvement? :seedling:  
+I believe that this covid19 R package is very astounding and all functions and features work perfectly. However, as a user and as a friend I have taken notes for Cuiping to help her R package becomes more reliable and perhaps even ready for listed on CRAN someday. First is about the package itself. I notice that several functions which are intended for internal process are available for users because the package export them. Functions for Shiny UI and Server like ```input_type()```, ```ui_page()``` and ```plot_highchart()``` can be seen by users when they load the library. Therefore, I will suggest her to hide these functions by deleting ```@export``` tag in some .R files which contain them. In my experience with my own R package (covidasean), I can still call internal functions without necessarily export them. Secondly, for the shiny app inside the package I also notice that the covid-19 data displayed in the visualization (including the map) only updated until July 31, 2020. I am not sure why the cases can not be updated until this month (October) even though I chose "Y" for "updating command" when the library loaded. My bad guess is because the dependency (coronavirus package) only has covid-19 data until July. I also tried to select different date range but unfortunately the bar chart which located under the date selector was not changed. After a minute trying, I realized that the date range selector only corresponds with the line chart. Hence I will suggest Cuiping to change the layout, possibly by not putting bar chart under the date range or alternatively put a note to inform users that the date range selector will only change the line chart. Another suggestion is related to a comparison bar chart which shows number of cases in million. I think it could be much helpful for users to read the number in thousand rather than million. Furthermore, the package can take advantage of scale R package to format the number in y axis in order to make a nice format number. Lastly, I also suggest the author to hide the message under the bar chart which I think will not be needed by users. After reading related codes inside the package, I assume that plotly's ```event_register()``` and ```renderPrint()``` are the suspect for the popped up message but I am not quite sure about that.  
+<center><img src = "https://i.imgur.com/McwX78S.png" alt= "message appears below the bar chart" width = 50%>"a message pops up under the bar chart"</center>  
+
+Besides the functions, I also would like to comment about documentation for the covid19 package. For internal documentation which can be accessed by command ```??covid19::launch_app``` (for example), I think the package has proper documentation that can help first time users like me to use the library. This R package also provide comprehensive vignette at the covid19's dedicated github page which can be very helpful for public to learn and use this useful package. The only suggestion about the documentation is just the same with my previous suggestion for the functions, that it could be better if internal functions are not accessible to external users hence the documentation for these functions would not be necessary. 
+
+<!-- A paragraph wrapping up what you’ve learned from reviewing the package? -->
+
+Above all, I can say that this covid19 package and the shiny dashboard inside the package are very in-depth in showing covid-19 cases to public particularly in comparing cases between countries around the globe. I learn much from this package, for instance on how to make an advanced visualization like scaterplot map and how to use plotly "event register", which can be useful for me when I create my own shiny dashboard for other purpose.  To help my blog's reader reading summary of this review, I attached below a check list form that lists all key aspect of the review on covid19 package. In addition, if you are interested with the covid19 package you can visit the github page of the package at: **https://etc5523-2020.github.io/r-package-assessment-cuiping-wei/index.html**  
+
+Thank you for reading my review, cheers! :coffee:  
+
+
+### Appendix
+
+#### Package Review
+
+*Please check off boxes as applicable, and elaborate in comments below.  Your review is not limited to these topics, as described in the reviewer guide*
+
+- **Briefly describe any working relationship you have (had) with the package authors.**
+- [X] As the reviewer I confirm that there are no [conflicts of interest](https://devguide.ropensci.org/policies.html#coi) for me to review this work.
+
+##### Documentation
+
+The package includes all the following forms of documentation:
+
+- [X] **A statement of need** clearly stating problems the software is designed to solve and its target audience in README
+- [X] **Installation instructions:** for the development version of package and any non-standard dependencies in README
+- [X] **Vignette(s)** demonstrating major functionality that runs successfully locally
+- [X] **Function Documentation:** for all exported functions in R help
+- [X] **Examples** for all exported functions in R Help that run successfully locally
+- [X] **Community guidelines** including contribution guidelines in the README or CONTRIBUTING, and DESCRIPTION with `URL`, `BugReports` and `Maintainer` (which may be autogenerated via `Authors@R`).
+
+>###### For packages co-submitting to JOSS
+>
+>- [ ] The package has an **obvious research application** according to [JOSS's definition](https://joss.theoj.org/about#submission_requirements)
+>
+>The package contains a `paper.md` matching [JOSS's requirements](https://joss.theoj.org/about#paper_structure) with:
+>
+>- [ ] **A short summary** describing the high-level functionality of the software
+>- [ ] **Authors:**  A list of authors with their affiliations
+>- [ ] **A statement of need** clearly stating problems the software is designed to solve and its target audience.
+>- [ ] **References:** with DOIs for all those that have one (e.g. papers, datasets, software).
+
+##### Functionality
+
+- [X] **Installation:** Installation succeeds as documented.
+- [X] **Functionality:** Any functional claims of the software been confirmed.
+- [X] **Performance:** Any performance claims of the software been confirmed.
+- [X] **Automated tests:** Unit tests cover essential functions of the package
+   and a reasonable range of inputs and conditions. All tests pass on the local machine.
+- [X] **Packaging guidelines**: The package conforms to the rOpenSci packaging guidelines
+
+Estimated hours spent reviewing:
+
+- [X] Should the author(s) deem it appropriate, I agree to be acknowledged as a package reviewer ("rev" role) in the package DESCRIPTION file.
+
+---
+
+#### Review Comments
+
+The covid19 R package has passed my test of functionality and has proper documentation including its dedicated github page. The shiny dashboard, as the main feature of this R package, can be successfully launched after loaded the R package using ```launch_app()``` function.
+
